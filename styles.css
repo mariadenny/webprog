@@ -1,0 +1,203 @@
+/* ===========================================================
+   profile.html — external stylesheet
+   =========================================================== */
+
+/* ---------- Reset / base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background-color: #eef1f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ---------- Layout wrapper ---------- */
+#page-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ===========================================================
+   MAIN CARD (relatively positioned container)
+   =========================================================== */
+.card {
+    position: relative;               /* establishes context for absolute children */
+    width: 100%;
+    background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%); /* gradient background */
+    border: 1px solid #d8d8e0;
+    border-radius: 16px;
+    padding: 40px 24px 24px 24px;     /* box model: padding on all sides */
+    margin: 20px auto;                /* box model: margin centers card */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: visible;
+    color: #ffffff;
+}
+
+/* ---------- Badge: absolutely positioned, top-right ---------- */
+.card > .badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-color: #ffd166;
+    color: #4a3200;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;                /* box model padding */
+    border: 2px solid #ffffff;
+    border-radius: 999px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* ---------- Image wrapper (positioning context for icon) ---------- */
+.card .image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto;         /* box model margin, centered */
+}
+
+/* Descendant selector: image inside .image-wrapper inside .card */
+.card .image-wrapper .profile-img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    object-fit: cover;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Decorative icon: overlaps bottom-left of image ---------- */
+.image-wrapper .deco-icon {
+    position: absolute;
+    bottom: -6px;
+    left: -6px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background-color: #ffd166;
+    color: #4a3200;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* ---------- Card content (ID selector) ---------- */
+#profile-card .card-content {
+    text-align: center;
+}
+
+#profile-name {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.card-content .profile-role {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 16px;
+}
+
+/* ---------- Bio (ID + class) ---------- */
+#profile-bio.bio {
+    font-size: 14px;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 14px 16px;                /* box model padding */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;               /* box model margin */
+}
+
+/* ---------- Stats list ---------- */
+.profile-stats {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 16px;                 /* box model padding */
+}
+
+.profile-stats li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-stats li strong {
+    font-size: 18px;
+}
+
+.profile-stats li span {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* ===========================================================
+   RESPONSIVE: stack layout, shrink image/badge below 600px
+   =========================================================== */
+@media screen and (max-width: 600px) {
+
+    .card {
+        padding: 32px 16px 16px 16px;
+        border-radius: 12px;
+    }
+
+    /* Stack card content vertically (already column, ensure full width) */
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-wrapper {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 14px;
+    }
+
+    .image-wrapper .profile-img {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+    }
+
+    .image-wrapper .deco-icon {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+    }
+
+    .badge {
+        top: -10px;
+        right: -8px;
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    #profile-name {
+        font-size: 20px;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
